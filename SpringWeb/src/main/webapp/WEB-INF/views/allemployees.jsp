@@ -17,6 +17,9 @@ tr:first-child {
 
 
 <body>
+<%-- Server Version: <%= application.getServerInfo() %><br>
+Servlet Version: <%= application.getMajorVersion() %>.<%= application.getMinorVersion() %>
+JSP Version: <%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %> <br> --%>
 	<h2>List of Employees</h2>
 	<table>
 		<tr>

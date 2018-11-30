@@ -33,9 +33,9 @@ public class AppController {
      */
     @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
     public String listEmployees(ModelMap model) {
-    	System.out.println("@RequestMapping(value = /list");
         List<Employee> employees = service.findAllEmployees();
         model.addAttribute("employees", employees);
+        System.out.println("@RequestMapping(value = /list"+employees);
         return "allemployees";
     }
  
@@ -89,7 +89,7 @@ public class AppController {
      */
     @RequestMapping(value = { "/edit-{ssn}-employee" }, method = RequestMethod.GET)
     public String editEmployee(@PathVariable String ssn, ModelMap model) {
-    	System.out.println("@RequestMapping(value = { /edit-{ssn}-employee");
+    	System.out.println("@RequestMapping(value = { /edit-{ssn}-employee"+ssn);
         Employee employee = service.findEmployeeBySsn(ssn);
         model.addAttribute("employee", employee);
         model.addAttribute("edit", true);
@@ -126,7 +126,7 @@ public class AppController {
      */
     @RequestMapping(value = { "/delete-{ssn}-employee" }, method = RequestMethod.GET)
     public String deleteEmployee(@PathVariable String ssn) {
-    	System.out.println("@RequestMapping(value = { /delete-{ssn}-employee }");
+    	System.out.println("@RequestMapping(value = { /delete-{ssn}-employee }"+ssn);
         service.deleteEmployeeBySsn(ssn);
         return "redirect:/list";
     }
