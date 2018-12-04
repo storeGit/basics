@@ -34,6 +34,14 @@ public class EmployeeController {
         List<Employee> listEmployee = employeeService.getAllEmployees();
         model.addObject("listEmployee", listEmployee);
         model.setViewName("home");
+        System.out.println("in / method first");
+        return model;
+    }
+    
+    @RequestMapping(value = "/index")
+    public ModelAndView listEmployeeAa(ModelAndView model) throws IOException {
+        model.setViewName("sample");
+        System.out.println("in /A method second");
         return model;
     }
  
@@ -42,6 +50,7 @@ public class EmployeeController {
         Employee employee = new Employee();
         model.addObject("employee", employee);
         model.setViewName("EmployeeForm");
+        System.out.println("in /newEmployee method");
         return model;
     }
  
@@ -53,6 +62,7 @@ public class EmployeeController {
         } else {
             employeeService.updateEmployee(employee);
         }
+        System.out.println("in /saveEmployee method");
         return new ModelAndView("redirect:/");
     }
  
@@ -60,6 +70,7 @@ public class EmployeeController {
     public ModelAndView deleteEmployee(HttpServletRequest request) {
         int employeeId = Integer.parseInt(request.getParameter("id"));
         employeeService.deleteEmployee(employeeId);
+        System.out.println("in /deleteEmployee method");
         return new ModelAndView("redirect:/");
     }
  
@@ -69,7 +80,7 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployee(employeeId);
         ModelAndView model = new ModelAndView("EmployeeForm");
         model.addObject("employee", employee);
- 
+        System.out.println("in /editEmployee method");
         return model;
     }
  

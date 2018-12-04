@@ -1,12 +1,15 @@
 package com.ameen.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -70,5 +73,19 @@ public class Employee implements Serializable {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+    
+    //@OneToOne
+    @OneToMany
+    private List<Address> add = new ArrayList<Address>();
+
+	public List<Address> getAdd() {
+		return add;
+	}
+
+	public void setAdd(List<Address> add) {
+		this.add = add;
+	}
+    
+    
  
 }

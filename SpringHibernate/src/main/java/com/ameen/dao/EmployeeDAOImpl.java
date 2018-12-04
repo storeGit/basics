@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ameen.model.Address;
 import com.ameen.model.Employee;
 
 @Repository
@@ -15,6 +16,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     private SessionFactory sessionFactory;
  
     public void addEmployee(Employee employee) {
+    	Address a1 = new Address();
+    	a1.setState("TamilNadu");
+    	a1.setCountry("india");
+    	a1.setCity(employee.getAddress());
+    	employee.getAdd().add(a1);
+    	sessionFactory.getCurrentSession().saveOrUpdate(a1);
         sessionFactory.getCurrentSession().saveOrUpdate(employee);
  
     }
