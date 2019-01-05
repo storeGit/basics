@@ -33,7 +33,8 @@ public class EmployeeController {
     public ModelAndView listEmployee(ModelAndView model) throws IOException {
         List<Employee> listEmployee = employeeService.getAllEmployees();
         model.addObject("listEmployee", listEmployee);
-        model.setViewName("home");
+        ///model.setViewName("home");
+        model.setViewName("login");
         System.out.println("in / method first");
         return model;
     }
@@ -82,6 +83,30 @@ public class EmployeeController {
         model.addObject("employee", employee);
         System.out.println("in /editEmployee method");
         return model;
+    }
+    
+    //Newly added 121218
+    @RequestMapping(value = "/allEmployee", method = RequestMethod.GET)
+    public ModelAndView allEmployee(){
+    	ModelAndView mv = null;
+    	try {
+    		 mv = new ModelAndView();
+    		 mv.setViewName("about");
+		} catch (Exception e) {
+		}
+    	return mv;
+    }
+    
+    @RequestMapping(value="/allEmployees", method = RequestMethod.GET)
+    public ModelAndView allEmployees(){
+    	ModelAndView mv= null;
+    	try {
+			mv = new ModelAndView();
+			//mv.setView(view);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+    	return mv;
     }
  
 }
